@@ -1,0 +1,47 @@
+package game.menus;
+import game.GameManager;
+import game.Utilities.MenuUtils;
+import game.Utilities.Text;
+
+public class TitleScreenMenu implements Menu {
+
+    @Override
+    public void display() {
+        Text.displayLogo();
+        Text.wrapBold("Your Adventure Awaits!");
+        System.out.print(
+                """
+                [1] NEW GAME
+                [2] OPTIONS
+                [3] HELP
+                [0] QUIT GAME
+                """ + Text.printLineBold() + "\n"
+        );
+        Text.askForInput("Select an option");
+        optionSelect();
+    }
+
+    public void optionSelect() {
+        switch (GameManager.getPlayerInput()) {
+            case "1":
+                System.out.println("\nStarting a New Game...");
+                GameManager.setPlayerName();
+                MenuUtils.show(new MainMenu());
+                break;
+            case "2":
+                System.out.println("Options...");
+                display();
+                break;
+            case "3":
+                System.out.println("Help...");
+                display();
+                break;
+            case "0":
+                GameManager.quit();
+                break;
+            default:
+                System.out.println("Invalid option selected...");
+                display();
+        }
+    }
+}

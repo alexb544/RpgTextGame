@@ -1,31 +1,35 @@
+package game;
+
+import game.Utilities.Text;
 
 public class ExperienceManager {
+    private static final Player player = GameManager.getPlayer();
     private static final int[] xpThresholds = new int[]
             {0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000};
 
-    // Getters:
-    public static int getXPThreshold(int level) {
-        return xpThresholds[level];
+    public static int getXPThreshold() {
+        return xpThresholds[GameManager.player.getLevel()];
     }
 
     // Methods:
-    public void gainXP(Player player, int xpGained) {
+    public static void gainXP(int xpGained) {
         player.setXP(player.getXP() + xpGained);
         Text.displayXPGained(xpGained);
-        if (player.getLevel() < 10 && xpToLevel(player) <= 0) {
-            levelUp(player);
+        if (player.getLevel() < 10 && xpToLevel() <= 0) {
+            levelUp();
         }
     }
 
-    public void levelUp(Player player) {
+    private static void levelUp() {
         player.setXP(player.getXP() - xpThresholds[player.getLevel()]);
         player.setLevel(player.getLevel() + 1);
         player.levelUp();
-        Text.displayLevelUp(player);
+        Text.displayLevelUp();
     }
 
-    public int xpToLevel(Player player) {
+    public static int xpToLevel() {
         return xpThresholds[player.getLevel()] - player.getXP();
     }
+
 
 }

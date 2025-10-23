@@ -1,11 +1,10 @@
 Currently Working On...
--
+>
 
 --------------------------------------------------------
 Systems:
 * Areas/Zones:
     - travel to "..." menu option?
-    -
 
 * Equipment:
     - menuSelect() option
@@ -18,6 +17,7 @@ Systems:
         - shows your current gold
         - options description at the bottom
             - item ('a' - 'z')
+
 --------------------------------------------------------
 Other:
 * EXP & HP "bars":
@@ -25,19 +25,23 @@ Other:
 
 * menuSelect:
     - Options:
-        1. Battle
+        1. Fight
         2. Display Stats
-        3.
+        3. Merchant
         4. Inventory
         5. Equipment
         6. Travel (go to area/town)
         0. Quit Game
 
-* Title Screen:
-    - Start New Game
-    - Options
-    - Help
-    - Exit Game
+* Options:
+    - change line length
+
+* Text Class: Create Table Method
+    - creates a table based on given parameters:
+        - rows/columns
+        - what to put in each column
+            - i.e. shop items (name, price, description)
+
 --------------------------------------------------------
 Questions:
 * What kind of combat should the game have?
@@ -48,6 +52,6 @@ Questions:
     - classes: (warrior/wizard/rogue)
     - stats:
         - currently: MaxHP/STR/DEF
-        - add?: (Magic/Mana, Speed, Luck, )
-    -
+        - add?: (Magic/Mana, Speed, Luck, Dex)
+
 --------------------------------------------------------

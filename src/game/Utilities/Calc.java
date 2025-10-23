@@ -1,3 +1,7 @@
+package game.Utilities;
+
+import game.GameManager;
+import game.Player;
 
 public class Calc {
 
@@ -7,5 +11,5 @@ public class Calc {
         int damageTaken = value  - defense;
         return Math.max(damageTaken, 0);
     }
-    
+
 }

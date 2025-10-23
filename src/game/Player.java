@@ -1,3 +1,4 @@
+package game;
 
 public class Player extends Stats {
     private String name;
