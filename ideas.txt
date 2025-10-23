@@ -1,0 +1,53 @@
+Currently Working On...
+-
+
+--------------------------------------------------------
+Systems:
+* Areas/Zones:
+    - travel to "..." menu option?
+    -
+
+* Equipment:
+    - menuSelect() option
+    - types? (chest/helm/etc)
+
+* Stores/Shops:
+    - Layout: "| Item Name | Price |"
+    - Displays:
+        - shows your current inventory limit (i.e. 13/25)
+        - shows your current gold
+        - options description at the bottom
+            - item ('a' - 'z')
+--------------------------------------------------------
+Other:
+* EXP & HP "bars":
+    - fills up based on percentage (0-10 steps)
+
+* menuSelect:
+    - Options:
+        1. Battle
+        2. Display Stats
+        3.
+        4. Inventory
+        5. Equipment
+        6. Travel (go to area/town)
+        0. Quit Game
+
+* Title Screen:
+    - Start New Game
+    - Options
+    - Help
+    - Exit Game
+--------------------------------------------------------
+Questions:
+* What kind of combat should the game have?
+    - turn based
+    - single button/option
+
+* Player Character (what should the player have?)
+    - classes: (warrior/wizard/rogue)
+    - stats:
+        - currently: MaxHP/STR/DEF
+        - add?: (Magic/Mana, Speed, Luck, )
+    -
+--------------------------------------------------------
