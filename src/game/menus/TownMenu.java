@@ -7,7 +7,7 @@ public class TownMenu implements Menu {
 
     @Override
     public void display() {
-        Text.wrapBold("[Town Menu]:\n" + Text.printLineBold() + "\n" +
+        Text.wrapBold("TOWN MENU:\n" + Text.printLineBold() + "\n" +
                 """
                 [1] Quest Board
                 [2] Shop

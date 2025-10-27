@@ -10,7 +10,7 @@ public class Calc {
         int defense = player.getDefense();
         int damageTaken = value - defense;
         player.setHealth(player.getHealth() - damageTaken);
-        System.out.println(player.getName() + " took " + damageTaken + " damage!");
+        System.out.println(Colors.color(player.getName() + " took " + damageTaken + " damage!", Colors.RED));
     }
 
 }

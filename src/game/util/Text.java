@@ -4,6 +4,8 @@ import game.ExperienceManager;
 import game.GameManager;
 import game.Player;
 
+import java.awt.*;
+
 public class Text {
     private static int lineLength = 89;
     private static final Player player = GameManager.getPlayer();
@@ -11,6 +13,7 @@ public class Text {
     // Display Methods: (Menus, Info, etc.)
     public static void displayLogo() {
         System.out.print(
+                Colors.color(
                 """
                 ███╗   ███╗██╗   ██╗    ███████╗ ██████╗ ██████╗      ██████╗  █████╗ ███╗   ███╗███████╗
                 ████╗ ████║╚██╗ ██╔╝    ██╔══██╗██╔══██╗██╔════╝     ██╔════╝ ██╔══██╗████╗ ████║██╔════╝
@@ -19,25 +22,39 @@ public class Text {
                 ██║ ╚═╝ ██║   ██║       ██║  ██║██║     ╚██████╔╝    ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗
                 ╚═╝     ╚═╝   ╚═╝       ╚═╝  ╚═╝╚═╝      ╚═════╝      ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝
                 """
-        );
+        , Colors.MAGENTA));
     }
     public static void displayStats() {
-        System.out.println("\n" + printLineBold() + "\n" + "[Stats]:");
-        wrapBold(String.format(
-                String.format("%s   Level: %d   XP: %d/%d %nHP:  %s %d/%d %n",
-                        player.getName(), player.getLevel(), player.getXP(), ExperienceManager.getXPThreshold(),
-                        displayHPBar() ,player.getHealth(), player.getMaxHealth())
-                + printLine()
-                + String.format("%nSTR: %d %nDEF: %d", player.getStrength(), player.getDefense())
-            )
+        wrapBold(center(Colors.color("STATS", Colors.BOLD)));
+        System.out.printf("%s     %s     %s%n",
+                player.getName(),
+                "Level: " + player.getLevel(),
+                "XP: " + player.getXP() + "/" + ExperienceManager.getXPThreshold()
         );
+        System.out.printf("HP: %s %d/%d%n",
+                Colors.color(displayHPBar(), Colors.GREEN),
+                player.getHealth(),
+                player.getMaxHealth()
+        );
+        line();
+        System.out.println("STR: " + player.getStrength());
+        System.out.println("DEF: " + player.getDefense());
+        lineBold();
+
         GameManager.await();
     }
     public static void displayXPGained(int xpGained) {
         System.out.printf("You gained: [%d XP]%n", xpGained);
     }
+
+    // TODO: fix level up (show prev stats before showing updated stats
     public static void displayLevelUp() {
-        wrapImportant(player.getName() + " Leveled up!");
+        wrapImportant(center(player.getName() + " Leveled up!"), Colors.YELLOW);
+        System.out.println(Colors.color("MAX HP --> " + player.getMaxHealth(), Colors.YELLOW));
+        System.out.println(Colors.color("STR    --> " + player.getStrength(), Colors.YELLOW));
+        System.out.println(Colors.color("DEF    --> " + player.getDefense(), Colors.YELLOW));
+        System.out.println(Colors.color(printLineImportant(), Colors.YELLOW));
+        GameManager.await();
     }
     public static void displayGameOver() {
         wrapBold("You died!%nGAME OVER!");
@@ -46,6 +63,7 @@ public class Text {
         wrapBold("Congratulations! You won!");
     }
 
+    // String returning methods for Displaying
     public static String displayHPBar() {
         int hp = player.getHealth();
         int maxHP = player.getMaxHealth();
@@ -93,15 +111,30 @@ public class Text {
         System.out.println(s);
         line();
     }
+    public static void wrap(String s, String color) {
+        System.out.println(
+                Colors.color(printLine() + "\n" + s + "\n" + printLine(), color)
+        );
+    }
     public static void wrapBold(String s) {
         lineBold();
         System.out.println(s);
         lineBold();
     }
+    public static void wrapBold(String s, String color) {
+        System.out.println(
+                Colors.color(printLineBold() + "\n" + s + "\n" + printLineBold(), color)
+        );
+    }
     public static void wrapImportant(String s) {
         lineImportant();
         System.out.println(s);
         lineImportant();
+    }
+    public static void wrapImportant(String s, String color) {
+        System.out.println(
+                Colors.color(printLineImportant() + "\n" + s + "\n" + printLineImportant(), color)
+        );
     }
 
     // Getters & Setters
@@ -112,5 +145,13 @@ public class Text {
         lineLength = newLength;
     }
 
+    public static String center(String text) {
+        int padding = Math.max(0, (lineLength - text.length()) / 2);
+        return " ".repeat(padding) + text;
+    }
+
+    public static void space() {
+        System.out.println("\n".repeat(10));
+    }
 
 }

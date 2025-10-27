@@ -3,6 +3,7 @@ package game.menus;
 import game.util.Calc;
 import game.ExperienceManager;
 import game.GameManager;
+import game.util.Colors;
 import game.util.MenuUtils;
 import game.util.Text;
 
@@ -10,7 +11,7 @@ public class MainMenu implements Menu {
 
     @Override
     public void display() {
-        Text.wrapBold("[Main Menu]:\n" + Text.printLineBold() + "\n" +
+        Text.wrapBold(Text.center(Colors.color("MAIN MENU", Colors.BOLD))+ "\n" + Text.printLineBold() + "\n" +
                 """
                 [1] Look Around
                 [2] Use Item
@@ -32,6 +33,7 @@ public class MainMenu implements Menu {
                 GameManager.await();
                 Calc.damage(20);
                 ExperienceManager.gainXP(50);
+                GameManager.await();
                 display();
                 break;
             case "2":

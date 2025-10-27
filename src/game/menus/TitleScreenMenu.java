@@ -1,6 +1,7 @@
 package game.menus;
 
 import game.GameManager;
+import game.util.Colors;
 import game.util.MenuUtils;
 import game.util.Text;
 
@@ -9,14 +10,12 @@ public class TitleScreenMenu implements Menu {
     @Override
     public void display() {
         Text.displayLogo();
-        Text.wrapBold("Your Adventure Awaits!");
-        System.out.print(
+        Text.wrapBold(
                 """
                 [1] NEW GAME
                 [2] OPTIONS
                 [3] HELP
-                [0] QUIT GAME
-                """ + Text.printLineBold() + "\n"
+                [0] QUIT GAME"""
         );
         Text.askForInput("Select an option");
         optionSelect();
