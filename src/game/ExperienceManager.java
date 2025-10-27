@@ -1,6 +1,6 @@
 package game;
 
-import game.Utilities.Text;
+import game.util.Text;
 
 public class ExperienceManager {
     private static final Player player = GameManager.getPlayer();

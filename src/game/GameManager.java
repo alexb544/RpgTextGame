@@ -1,6 +1,7 @@
 package game;
+
 import java.util.Scanner;
-import game.Utilities.*;
+import game.util.*;
 import game.menus.*;
 
 public class GameManager {
@@ -10,25 +11,6 @@ public class GameManager {
     public static void main(String[] args) {
         MenuUtils.show(new TitleScreenMenu());
         gameEnd();
-    }
-
-    public static void gameEnd() {
-        if (player.getHealth() <= 0)
-            Text.displayGameOver();
-        else {
-            Text.displayLogo();
-            Text.displayGameWon();
-        }
-    }
-
-    public static void quit() {
-        System.out.print("Are you sure you want to Quit? (y/n): ");
-        String confirm = getPlayerInput();
-        if (confirm.equalsIgnoreCase("y")) {
-            System.out.println("Closing Game... Thanks for playing!");
-            System.exit(0);
-        }
-        else System.out.println();
     }
 
     public static void setPlayerName() {
@@ -49,14 +31,32 @@ public class GameManager {
     public static Player getPlayer() {
         return player;
     }
+
     public static String getPlayerInput() {
         return input.nextLine().trim();
     }
 
     public static void await() {
-        System.out.print("Press Enter to continue...");
-        getPlayerInput();
-        System.out.println();
+        input.nextLine();
+    }
+
+    public static void quit() {
+        System.out.print("Are you sure you want to Quit? (y/n): ");
+        String confirm = getPlayerInput();
+        if (confirm.equalsIgnoreCase("y")) {
+            System.out.println("Closing Game... Thanks for playing!");
+            System.exit(0);
+        }
+        else System.out.println();
+    }
+
+    public static void gameEnd() {
+        if (player.getHealth() <= 0)
+            Text.displayGameOver();
+        else {
+            Text.displayLogo();
+            Text.displayGameWon();
+        }
     }
 
 }

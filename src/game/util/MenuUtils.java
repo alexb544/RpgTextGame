@@ -1,4 +1,4 @@
-package game.Utilities;
+package game.util;
 import game.menus.*;
 
 public class MenuUtils {

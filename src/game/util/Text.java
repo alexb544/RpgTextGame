@@ -1,4 +1,4 @@
-package game.Utilities;
+package game.util;
 
 import game.ExperienceManager;
 import game.GameManager;
@@ -24,9 +24,9 @@ public class Text {
     public static void displayStats() {
         System.out.println("\n" + printLineBold() + "\n" + "[Stats]:");
         wrapBold(String.format(
-                String.format("%s   Level: %d   XP: %d/%d %nHP:  %d/%d %n",
+                String.format("%s   Level: %d   XP: %d/%d %nHP:  %s %d/%d %n",
                         player.getName(), player.getLevel(), player.getXP(), ExperienceManager.getXPThreshold(),
-                        player.getHealth(), player.getMaxHealth())
+                        displayHPBar() ,player.getHealth(), player.getMaxHealth())
                 + printLine()
                 + String.format("%nSTR: %d %nDEF: %d", player.getStrength(), player.getDefense())
             )
@@ -44,6 +44,20 @@ public class Text {
     }
     public static void displayGameWon() {
         wrapBold("Congratulations! You won!");
+    }
+
+    public static String displayHPBar() {
+        int hp = player.getHealth();
+        int maxHP = player.getMaxHealth();
+
+        int totalBars = 10 + (Math.max(0, (maxHP - 100) / 25));
+        int filledBars = (int) Math.round((double) hp / maxHP * totalBars);
+        int emptyBars = totalBars - filledBars;
+
+        String filled = "█".repeat(filledBars);
+        String empty = " ".repeat(emptyBars);
+
+        return "[" + filled + empty + "]";
     }
 
     // Ask for Input:

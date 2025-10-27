@@ -1,7 +1,8 @@
 package game.menus;
+
 import game.GameManager;
-import game.Utilities.MenuUtils;
-import game.Utilities.Text;
+import game.util.MenuUtils;
+import game.util.Text;
 
 public class TitleScreenMenu implements Menu {
 

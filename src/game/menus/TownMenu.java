@@ -1,19 +1,16 @@
 package game.menus;
 
-import game.util.Calc;
-import game.ExperienceManager;
 import game.GameManager;
-import game.util.MenuUtils;
 import game.util.Text;
 
-public class MainMenu implements Menu {
+public class TownMenu implements Menu {
 
     @Override
     public void display() {
-        Text.wrapBold("[Main Menu]:\n" + Text.printLineBold() + "\n" +
+        Text.wrapBold("[Town Menu]:\n" + Text.printLineBold() + "\n" +
                 """
-                [1] Look Around
-                [2] Use Item
+                [1] Quest Board
+                [2] Shop
                 [3] View Stats
                 [4] Check Equipment
                 [5] Open Inventory
@@ -27,33 +24,29 @@ public class MainMenu implements Menu {
     @Override
     public void optionSelect() {
         switch (GameManager.getPlayerInput()) {
-            case "1":
-                System.out.print("\nYou look around for a bit...");
-                GameManager.await();
-                Calc.damage(20);
-                ExperienceManager.gainXP(50);
+            case "1": // Quest Board
+                System.out.println("Quest Board");
                 display();
                 break;
-            case "2":
-                System.out.println("Use Item");
+            case "2": // Shop
+                System.out.println("Shop");
                 display();
                 break;
-            case "3":
+            case "3": // View Stats
                 Text.displayStats();
                 display();
                 break;
-            case "4":
-                System.out.println("Check Equipment");
+            case "4": // Check Equipment
+                System.out.println("Equipment");
                 display();
                 break;
-            case "5":
-                System.out.println("Open Inventory");
+            case "5": // Open Inventory
+                System.out.println("Inventory");
                 display();
                 break;
-            case "6":
-                System.out.println("Leave Area --> You go to a nearby town...");
-                GameManager.await();
-                MenuUtils.show(new TownMenu());
+            case "6": // Leave Area
+                System.out.println("Leave Area");
+                display();
                 break;
             case "0":
                 GameManager.quit();
