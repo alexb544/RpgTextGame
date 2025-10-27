@@ -3,6 +3,7 @@ package game;
 public class Player extends Stats {
     private String name;
     private int health;
+    private int mana;
     private int level = 1;
     private int xp;
     private int gold;
@@ -12,11 +13,13 @@ public class Player extends Stats {
     public Player() {
         super();
         this.health = getMaxHealth();
+        this.gold = 100;
     }
 
     // Getters:
     public String getName() { return this.name; }
     public int getHealth() { return this.health; }
+    public int getMana() { return this.mana; }
     public int getLevel() { return this.level; }
     public int getXP() { return this.xp; }
     public int getGold() { return this.gold; }
@@ -24,17 +27,24 @@ public class Player extends Stats {
     // Setters:
     public void setName(String name) { this.name = name; }
     public void setHealth(int health) { this.health = health; }
+    public void setMana(int mana) { this.mana = mana; }
     public void setLevel(int level) { this.level = level; }
     public void setXP(int xp) { this.xp = xp; }
     public void setGold(int gold) { this.gold = gold; }
 
+
     // Methods:
-    public void  payGold(int gold) {
+    public void payGold(int gold) {
         this.gold -= gold;
     }
     public void gainGold(int gold) {
         this.gold += gold;
     }
 
-
+    public void heal(int amount) {
+        this.health = Math.min(this.health + amount, getMaxHealth());
+    }
+    public void restore(int amount) {
+        this.health = Math.min(this.mana + amount, getMaxMana());
+    }
 }

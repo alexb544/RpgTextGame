@@ -1,13 +1,15 @@
 package game.menus;
 
 import game.GameManager;
+import game.Shop;
+import game.util.Colors;
 import game.util.Text;
 
 public class TownMenu implements Menu {
 
     @Override
     public void display() {
-        Text.wrapBold("TOWN MENU:\n" + Text.printLineBold() + "\n" +
+        Text.wrapBold(Text.center(Colors.color("TOWN MENU", Colors.BOLD)) + "\n" + Text.printLineBold() + "\n" +
                 """
                 [1] Quest Board
                 [2] Shop
@@ -29,7 +31,9 @@ public class TownMenu implements Menu {
                 display();
                 break;
             case "2": // Shop
-                System.out.println("Shop");
+                Shop shop = new Shop();
+                shop.displayInventory();
+                GameManager.await();
                 display();
                 break;
             case "3": // View Stats

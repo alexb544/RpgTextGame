@@ -1,5 +1,5 @@
 Currently Working On...
-> Health Bar 
+> Shop/Items/Equipment Slots
 
 --------------------------------------------------------
 Systems:

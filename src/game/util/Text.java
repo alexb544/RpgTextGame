@@ -4,8 +4,6 @@ import game.ExperienceManager;
 import game.GameManager;
 import game.Player;
 
-import java.awt.*;
-
 public class Text {
     private static int lineLength = 89;
     private static final Player player = GameManager.getPlayer();
@@ -154,4 +152,11 @@ public class Text {
         System.out.println("\n".repeat(10));
     }
 
+    // shops/inventory/equipment
+    public static void box(String items) {
+        System.out.println("╔" + "═".repeat(lineLength - 2) + "╗");
+
+        System.out.println("╚" + "═".repeat(lineLength - 2) + "╝");
+
+    }
 }
