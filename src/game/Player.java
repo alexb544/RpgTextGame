@@ -1,5 +1,10 @@
 package game;
 
+import game.enums.EQUIPMENT_SLOT;
+import game.items.Equipment;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Player extends Stats {
     private String name;
     private int health;
@@ -7,7 +12,8 @@ public class Player extends Stats {
     private int level = 1;
     private int xp;
     private int gold;
-    //private Equipment equipment;
+    private Map<EQUIPMENT_SLOT, Equipment> equipment = new HashMap<>();
+
 
 
     public Player() {
@@ -41,10 +47,22 @@ public class Player extends Stats {
         this.gold += gold;
     }
 
+        // Health Methods:
     public void heal(int amount) {
         this.health = Math.min(this.health + amount, getMaxHealth());
     }
     public void restore(int amount) {
         this.health = Math.min(this.mana + amount, getMaxMana());
     }
+
+        // Equipment Methods:
+    public void equip(EQUIPMENT_SLOT slot, Equipment equipment) {
+        equipment.put(slot, item);
+    }
+
+    public Equipment getEquipped(EQUIPMENT_SLOT slot) {
+        return equipment.get(slot);
+    }
+
+
 }

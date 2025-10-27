@@ -1,20 +1,14 @@
 package game.items;
 
 import game.GameManager;
+import game.enums.CONSUMABLE_TYPE;
 
 public class Consumable extends Item {
     private final int amount;
-    private final TYPE type;
-
-    public enum TYPE {
-        HEAL,
-        RESTORE,
-        BUFF,
-        DEBUFF
-    };
+    private final CONSUMABLE_TYPE type;
 
     // Constructor:
-    public Consumable(String name, String description, int value, int amount, TYPE type) {
+    public Consumable(String name, String description, int value, int amount, CONSUMABLE_TYPE type) {
         super(name, description, value);
         this.amount = amount;
         this.type = type;
@@ -24,20 +18,18 @@ public class Consumable extends Item {
     public int getAmount() {
         return this.amount;
     }
-    public TYPE getType() {
+    public CONSUMABLE_TYPE getType() {
         return type;
     }
-
 
     // Methods:
     @Override
     public void use() {
         switch (type) {
-            case HEAL:    GameManager.getPlayer().heal(amount); break;
-            case RESTORE: GameManager.getPlayer().restore(amount); break;
-            case BUFF:    System.out.println("BUFF not yet implemented"); break;
-            case DEBUFF:  System.out.println("DEBUFF not yet implemented"); break;
-            default:      System.out.println("Oh no! The item was defective!"); return;
+            case HEAL    -> GameManager.getPlayer().heal(amount);
+            case RESTORE -> GameManager.getPlayer().restore(amount);
+            case BUFF    -> System.out.println("BUFF not yet implemented");
+            case DEBUFF  -> System.out.println("DEBUFF not yet implemented");
         }
     }
 
